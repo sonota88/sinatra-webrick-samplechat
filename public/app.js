@@ -19,6 +19,8 @@ class Comet {
   }
 
   open(){
+    debug("-->> Comet#open");
+
     clearTimeout(this.timer);
     this.timer = setTimeout(()=>{
       this._open();
