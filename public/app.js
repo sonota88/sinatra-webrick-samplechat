@@ -11,6 +11,7 @@ class Comet {
       .then((x)=>{
         debug("then", x);
         this.onmessage(x);
+        this.open();
       })
       .catch((x)=>{
         debug("catch", x);
