@@ -41,6 +41,15 @@ class Page {
     $("#btn_post").on("click", ()=>{
       const text = $("#input").val();
       puts(text);
+
+      $.post("/messages", {
+        msg: text
+      })
+        .then((x)=>{
+          debug("post>then", x);
+          $("#input").val("");
+        })
+        .catch((x)=>{ puts("post>catch", x); });
     });
 
     // Comet
