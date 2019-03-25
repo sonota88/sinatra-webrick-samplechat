@@ -2,5 +2,5 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 get "/" do
-  "TODO"
+  send_file "index.html"
 end
