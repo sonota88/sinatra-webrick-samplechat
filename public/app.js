@@ -36,6 +36,15 @@ class Page {
   start(){
     debug("-->> start");
 
+    // Events
+
+    $("#btn_post").on("click", ()=>{
+      const text = $("#input").val();
+      puts(text);
+    });
+
+    // Comet
+
     this.comet.onmessage = (msg)=>{
       debug("-->> onmessage", msg);
     };
