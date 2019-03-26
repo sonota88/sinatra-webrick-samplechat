@@ -49,7 +49,6 @@ class App {
 
     $("#btn_post").on("click", ()=>{
       const text = $("#input").val();
-      puts(text);
 
       $.post("/messages", {
         sessionid: this.SESSION_ID,
