@@ -29,8 +29,7 @@ get "/" do
 end
 
 post "/comet/open" do
-  msg = $conn_manager.deq(params[:sessionid])
-  msg
+  $conn_manager.deq(params[:sessionid])
 end
 
 post "/messages" do
