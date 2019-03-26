@@ -28,7 +28,7 @@ class Comet {
   }
 }
 
-class Page {
+class App {
   constructor(){
     this.comet = new Comet();
   }
@@ -64,6 +64,6 @@ class Page {
 }
 
 $(()=>{
-  window.__p = new Page();
-  __p.start();
+  window.app = new App();
+  app.start();
 });
