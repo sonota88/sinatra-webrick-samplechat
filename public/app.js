@@ -44,7 +44,7 @@ class App {
 
     this.render();
 
-    // Events
+    // Event handling
 
     $("#btn_post").on("click", ()=>{
       $.post("/messages", {
@@ -60,7 +60,7 @@ class App {
         });
     });
 
-    // Comet
+    // Setup comet
 
     this.comet.onmessage = (msg)=>{
       puts("-->> onmessage", msg);
