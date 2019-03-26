@@ -41,6 +41,8 @@ class App {
 
     this.SESSION_ID = this.generateSessionId();
 
+    this.render();
+
     // Events
 
     $("#btn_post").on("click", ()=>{
@@ -70,6 +72,8 @@ class App {
   }
 
   render(){
+    $("#session_id").text(this.SESSION_ID);
+
     const messageContainer = $("#messages_container");
     messageContainer.empty();
     this.state.messages.reverse().forEach((msg)=>{
