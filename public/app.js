@@ -31,6 +31,9 @@ class Comet {
 class App {
   constructor(){
     this.comet = new Comet();
+    this.state = {
+      messages: []
+    };
   }
 
   start(){
@@ -56,10 +59,20 @@ class App {
 
     this.comet.onmessage = (msg)=>{
       debug("-->> onmessage", msg);
+      this.state.messages.push(msg);
+      this.render();
     };
 
     // 最初の接続
     this.comet.open();
+  }
+
+  render(){
+    const messageContainer = $("#messages_container");
+    messageContainer.empty();
+    this.state.messages.reverse().forEach((msg)=>{
+      messageContainer.append($('<p></p>').text(msg))
+    });
   }
 }
 
