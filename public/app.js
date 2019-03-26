@@ -10,13 +10,13 @@ class Comet {
     $.post("/comet/open", {
       sessionid: sessionId
     })
-      .then((x)=>{
-        debug("then", x);
-        this.onmessage(x);
+      .then((data)=>{
+        debug("then", data);
+        this.onmessage(data);
         this.open(sessionId);
       })
-      .catch((x)=>{
-        debug("catch", x);
+      .catch((data)=>{
+        debug("catch", data);
       });
   }
 
@@ -54,11 +54,11 @@ class App {
         sessionid: this.SESSION_ID,
         msg: text
       })
-        .then((x)=>{
-          debug("post>then", x);
+        .then((data)=>{
+          debug("post>then", data);
           $("#input").val("");
         })
-        .catch((x)=>{ puts("post>catch", x); });
+        .catch((data)=>{ puts("post>catch", data); });
     });
 
     // Comet
