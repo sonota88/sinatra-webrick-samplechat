@@ -39,6 +39,8 @@ class App {
   start(){
     debug("-->> start");
 
+    this.SESSION_ID = this.generateSessionId();
+
     // Events
 
     $("#btn_post").on("click", ()=>{
@@ -73,6 +75,27 @@ class App {
     this.state.messages.reverse().forEach((msg)=>{
       messageContainer.append($('<p></p>').text(msg))
     });
+  }
+
+  generateSessionId(){
+    const randInt = (n)=>{
+      return Math.floor(Math.random() * n);
+    };
+
+    const names1 = [
+      "Warty", "Hoary", "Breezy", "Dapper", "Edgy",
+      "Feisty", "Gutsy", "Hardy", "Intrepid", "Jaunty"
+    ];
+    const names2 = [
+      "Warthog", "Hedgehog", "Badger", "Drake", "Eft",
+      "Fawn", "Gibbon", "Heron", "Ibex", "Jackalope"
+    ];
+
+    return [
+      names1[randInt(names1.length)],
+      names2[randInt(names2.length)],
+      randInt(10000)
+    ].join("_");
   }
 }
 
