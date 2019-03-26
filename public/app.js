@@ -1,5 +1,4 @@
 const puts = console.log.bind(console);
-const debug = console.debug.bind(console);
 
 class Comet {
   constructor(){
@@ -11,17 +10,17 @@ class Comet {
       sessionid: sessionId
     })
       .then((data)=>{
-        debug("then", data);
+        puts("then", data);
         this.onmessage(data);
         this.open(sessionId);
       })
       .catch((data)=>{
-        debug("catch", data);
+        puts("catch", data);
       });
   }
 
   open(sessionId){
-    debug("-->> Comet#open");
+    puts("-->> Comet#open");
 
     clearTimeout(this.timer);
     this.timer = setTimeout(()=>{
@@ -39,7 +38,7 @@ class App {
   }
 
   start(){
-    debug("-->> start");
+    puts("-->> start");
 
     this.SESSION_ID = this.generateSessionId();
 
@@ -53,7 +52,7 @@ class App {
         body: $("#input").val()
       })
         .then((data)=>{
-          debug("post>then", data);
+          puts("post>then", data);
           $("#input").val("");
         })
         .catch((data)=>{ puts("post>catch", data); });
@@ -62,7 +61,7 @@ class App {
     // Comet
 
     this.comet.onmessage = (msg)=>{
-      debug("-->> onmessage", msg);
+      puts("-->> onmessage", msg);
       this.state.messages.push(msg);
       this.render();
     };
