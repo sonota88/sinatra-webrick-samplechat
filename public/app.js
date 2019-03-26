@@ -75,10 +75,10 @@ class App {
   render(){
     $("#session_id").text(this.SESSION_ID);
 
-    const messageContainer = $("#messages_container");
-    messageContainer.empty();
+    const messagesContainer = $("#messages_container");
+    messagesContainer.empty();
     this.state.messages.forEach((msg)=>{
-      messageContainer.prepend($('<p></p>').text(msg))
+      messagesContainer.prepend($('<p></p>').text(msg))
     });
   }
 
