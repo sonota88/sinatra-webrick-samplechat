@@ -12,11 +12,6 @@ class ConnectionManager
     end
   end
 
-  def enq(session_id, msg)
-    prepare_queue(session_id)
-    @map[session_id].enq(msg)
-  end
-
   def broadcast(msg)
     @map.each do |_, queue|
       queue.enq(msg)
