@@ -50,6 +50,7 @@ class App {
       puts(text);
 
       $.post("/messages", {
+        sessionid: this.SESSION_ID,
         msg: text
       })
         .then((x)=>{
