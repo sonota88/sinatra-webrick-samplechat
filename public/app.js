@@ -55,7 +55,9 @@ class App {
           puts("post>then", data);
           $("#input").val("");
         })
-        .catch((data)=>{ puts("post>catch", data); });
+        .catch((data)=>{
+          puts("post>catch", data);
+        });
     });
 
     // Comet
@@ -81,9 +83,7 @@ class App {
   }
 
   generateSessionId(){
-    const randInt = (n)=>{
-      return Math.floor(Math.random() * n);
-    };
+    const randInt = (n) => Math.floor(Math.random() * n);
 
     const names1 = [
       "Warty", "Hoary", "Breezy", "Dapper", "Edgy",

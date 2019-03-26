@@ -3,14 +3,11 @@ require 'sinatra/reloader'
 
 class ConnectionManager
   def initialize
-    # session id => queue
-    @map = {}
+    @map = {} # session id => queue
   end
 
   def broadcast(msg)
-    @map.each do |_, queue|
-      queue.enq(msg)
-    end
+    @map.each { |_, queue| queue.enq(msg) }
   end
 
   def deq(session_id)
@@ -36,6 +33,5 @@ post "/messages" do
   $conn_manager.broadcast(
     params[:sessionid] + ": " + params[:body]
   )
-
   "ok"
 end
