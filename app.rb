@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 
 class ConnectionManager
   def initialize
+    # session id => queue
     @map = {}
   end
 
