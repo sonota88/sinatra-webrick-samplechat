@@ -6,15 +6,19 @@ class ConnectionManager
     @map = {}
   end
 
+  def prepare_queue(session_id)
+    unless @map.key?(session_id)
+      @map[session_id] = Thread::Queue.new
+    end
+  end
+
   def enq(session_id, msg)
+    prepare_queue(session_id)
     @map[session_id].enq(msg)
   end
 
   def deq(session_id)
-    unless @map.key?(session_id)
-      @map[session_id] = Thread::Queue.new
-    end
-
+    prepare_queue(session_id)
     @map[session_id].deq
   end
 end
