@@ -7,7 +7,7 @@ class ConnectionManager
   end
 
   def broadcast(msg)
-    @map.each { |_, queue| queue.enq(msg) }
+    @map.each_value { |queue| queue.enq(msg) }
   end
 
   def deq(session_id)
