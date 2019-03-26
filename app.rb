@@ -17,6 +17,12 @@ class ConnectionManager
     @map[session_id].enq(msg)
   end
 
+  def broadcast(msg)
+    @map.each do |_, queue|
+      queue.enq(msg)
+    end
+  end
+
   def deq(session_id)
     prepare_queue(session_id)
     @map[session_id].deq
@@ -35,8 +41,9 @@ post "/comet/open" do
 end
 
 post "/messages" do
-  $conn_manager.enq(
-    params[:sessionid],
+  $conn_manager.broadcast(
     params[:msg]
   )
+
+  "ok"
 end
