@@ -77,8 +77,8 @@ class App {
 
     const messageContainer = $("#messages_container");
     messageContainer.empty();
-    this.state.messages.reverse().forEach((msg)=>{
-      messageContainer.append($('<p></p>').text(msg))
+    this.state.messages.forEach((msg)=>{
+      messageContainer.prepend($('<p></p>').text(msg))
     });
   }
 
