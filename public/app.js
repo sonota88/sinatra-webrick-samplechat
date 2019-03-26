@@ -10,12 +10,12 @@ class Comet {
       sessionid: sessionId
     })
       .then((data)=>{
-        puts("then", data);
+        puts("_open>then", data);
         this.onmessage(data);
         this.open(sessionId);
       })
       .catch((data)=>{
-        puts("catch", data);
+        puts("_open>catch", data);
       });
   }
 
