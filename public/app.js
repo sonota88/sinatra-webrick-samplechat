@@ -6,24 +6,26 @@ class Comet {
     this.timer = null;
   }
 
-  _open(){
-    $.post("/comet/open")
+  _open(sessionId){
+    $.post("/comet/open", {
+      sessionid: sessionId
+    })
       .then((x)=>{
         debug("then", x);
         this.onmessage(x);
-        this.open();
+        this.open(sessionId);
       })
       .catch((x)=>{
         debug("catch", x);
       });
   }
 
-  open(){
+  open(sessionId){
     debug("-->> Comet#open");
 
     clearTimeout(this.timer);
     this.timer = setTimeout(()=>{
-      this._open();
+      this._open(sessionId);
     }, 0);
   }
 }
@@ -69,7 +71,7 @@ class App {
     };
 
     // 最初の接続
-    this.comet.open();
+    this.comet.open(this.SESSION_ID);
   }
 
   render(){
