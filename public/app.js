@@ -48,11 +48,11 @@ class App {
     // Events
 
     $("#btn_post").on("click", ()=>{
-      const text = $("#input").val();
+      const body = $("#input").val();
 
       $.post("/messages", {
         sessionid: this.SESSION_ID,
-        msg: text
+        body
       })
         .then((data)=>{
           debug("post>then", data);

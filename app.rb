@@ -34,7 +34,7 @@ end
 
 post "/messages" do
   $conn_manager.broadcast(
-    params[:msg]
+    params[:body]
   )
 
   "ok"
